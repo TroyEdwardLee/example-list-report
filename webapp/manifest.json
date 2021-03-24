@@ -1,0 +1,144 @@
+{
+	"_version": "1.9.0",
+	"sap.app": {
+		"id": "example.list.reportexample-list-report",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "ui5template.basicSAPUI5ApplicationProject",
+			"version": "1.40.12"
+		},
+		"dataSources": {
+			"Northwind.svc": {
+				"uri": "/northwind/V2/Northwind/Northwind.svc/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/metadata.xml",
+					"odataVersion": "2.0",
+					"annotations": [
+						"annotation0"
+					]
+				}
+			},
+			"annotation0": {
+				"type": "ODataAnnotation",
+				"uri": "localService/annotation0.xml",
+				"settings": {
+					"localUri": "localService/annotation0.xml"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": false,
+			"phone": false
+		},
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_belize"
+		]
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "example.list.reportexample-list-report.view.App",
+			"type": "XML"
+		},
+		"config": {
+			"fullWidth": true,
+			"sapFiori2Adaptation": {
+				"style": true,
+				"collapse": true,
+				"title": false,
+				"back": false,
+				"hierarchy": false
+			}
+		},
+		"dependencies": {
+			"minUI5Version": "1.60.1",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.ui.layout": {},
+				"sap.ushell": {},
+				"sap.collaboration": {},
+				"sap.ui.comp": {},
+				"sap.uxap": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "example.list.reportexample-list-report.i18n.i18n"
+				}
+			},
+			"": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "Northwind.svc",
+				"preload": true
+			},
+			"@i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"uri": "i18n/i18n.properties"
+			}
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "example.list.reportexample-list-report.view",
+				"controlId": "app",
+				"controlAggregation": "pages",
+				"transition": "slide",
+				"async": true
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "DynamicPageListReport",
+					"target": [
+						"listReport"
+					]
+				}
+			],
+			"targets": {
+				"listReport": {
+					"viewName": "DynamicPageListReport",
+					"viewId": "listReport",
+					"viewLevel": 1
+				}
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		}
+	}
+}

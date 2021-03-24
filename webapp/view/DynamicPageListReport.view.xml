@@ -1,0 +1,152 @@
+<mvc:View controllerName="example.list.reportexample-list-report.controller.DynamicPageListReport" height="100%"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m" xmlns:f="sap.f"
+	xmlns:fb="sap.ui.comp.filterbar" xmlns:vm="sap.ui.comp.variants" xmlns:uiTable="sap.ui.table"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:sv="sap.ui.comp.smartvariants"
+	xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<f:DynamicPage id="dynamicPageId" headerExpanded="{/headerExpanded}">
+		<!-- DynamicPage Title -->
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<sv:SmartVariantManagement id="__SVM01"
+						persistencyKey="UniqueAndStablePersistencyKey" showShare="true"
+						showExecuteOnSelection="true" entitySet="Products"/>
+					<!--<vm:VariantManagement standardItemText="My Products"></vm:VariantManagement>-->
+				</f:heading>
+				<!--<f:actions>
+					<ToolbarSpacer/>
+					<Button text="Global Action" type="Transparent"/>
+					<Button text="Toggle Footer" type="Transparent" press="onToggleFooter"/>
+					<Button icon="sap-icon://action" type="Transparent"/>
+				</f:actions>-->
+			</f:DynamicPageTitle>
+		</f:title>
+		<!-- DynamicPage Header -->
+		<f:header>
+			<f:DynamicPageHeader pinnable="true">
+				<f:content>
+					<smartFilterBar:SmartFilterBar id="smartFilterBar" search="onSearch"
+						smartVariant="__SVM01" useToolbar="false" entitySet="Products"
+						persistencyKey="UniqueAndStablePersistencyKey.FilterBar"
+						assignedFiltersChanged="onAssignedFiltersChanged" enableBasicSearch="false" basicSearchFieldName="ProductId">
+						<smartFilterBar:controlConfiguration>
+							<!--<smartFilterBar:ControlConfiguration
+								key="MyOwnFilterField" index="1" label="Custom Filter Field"
+								groupId="_BASIC" width="300px" mandatory="mandatory"
+								visibleInAdvancedArea="true">
+								<smartFilterBar:customControl>
+									<Select id="foo" customData:hasValue="true">
+										<core:Item key="1" text="ONE"/>
+										<core:Item key="2" text="TWO"/>
+										<core:Item key="3" text="THREE"/>
+									</Select>
+								</smartFilterBar:customControl>
+							</smartFilterBar:ControlConfiguration>-->
+							<smartFilterBar:ControlConfiguration
+								key="ProductName" label="Product Name" visibleInAdvancedArea="true">
+							</smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration
+								key="ProductID" label="Product ID" visibleInAdvancedArea="true">
+							</smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration
+								key="CategoryID" label="Category ID" visibleInAdvancedArea="true">
+							</smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration
+								key="SupplierID" label="Supplier ID" visibleInAdvancedArea="true">
+							</smartFilterBar:ControlConfiguration>
+						</smartFilterBar:controlConfiguration>
+						<smartFilterBar:groupConfiguration>
+							<smartFilterBar:GroupConfiguration
+									key="Products" label="Product">
+							</smartFilterBar:GroupConfiguration>
+							<!--<smartFilterBar:GroupConfiguration
+									key="Orders" label="{i18n>FISCALDATE_GROUP_LABEL}">
+							</smartFilterBar:GroupConfiguration>-->
+						</smartFilterBar:groupConfiguration>
+						<smartFilterBar:layoutData>
+							<FlexItemData shrinkFactor="0"/>
+						</smartFilterBar:layoutData>
+					</smartFilterBar:SmartFilterBar>
+					<!--<fb:FilterBar id="filterbar" reset="onReset" search="onSearch" useToolbar="false" showGoOnFB="true">
+						<fb:filterGroupItems>
+							<fb:FilterGroupItem groupName="__$INTERNAL$" name="A" label="Name" partOfCurrentVariant="true" visibleInFilterBar="true">
+								<fb:control>
+									<Select id="slName" forceSelection="true" items="{ path: '/ProductNames' }">
+										<core:Item key="{key}" text="{name}"/>
+									</Select>
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem groupName="__$INTERNAL$" name="B" label="Category" partOfCurrentVariant="true" visibleInFilterBar="true">
+								<fb:control>
+									<Select id="slCategory" forceSelection="true" items="{ path: '/ProductCategories' }">
+										<core:Item key="{key}" text="{name}"/>
+									</Select>
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem groupName="__$INTERNAL$" name="P" label="Product" partOfCurrentVariant="true" visibleInFilterBar="true">
+								<fb:control>
+									<MultiInput
+											id="productMultiInputWithSuggestions"
+											valueHelpRequest=".onValueHelpWithSuggestionsRequested"
+												suggestionRows="{
+												path: '/ProductCollection',
+												length: 10
+											}"
+										>
+										<suggestionColumns>
+											<Column>
+												<Label text="ProductId"/>
+											</Column>
+											<Column>
+												<Label text="Product Name"/>
+											</Column>
+											<Column>
+												<Label text="Category"/>
+											</Column>
+										</suggestionColumns>
+										<suggestionRows>
+											<ColumnListItem>
+												<cells>
+													<Label text="{ProductId}" />
+													<Label text="{Name}" />
+													<Label text="{Category}" />
+												</cells>
+											</ColumnListItem>
+										</suggestionRows>
+									</MultiInput>
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem groupName="C" groupTitle="Aditional" name="C" label="SupplierName" labelTooltip="Aditional filters">
+								<fb:control>
+									<Select id="slSupplierName" forceSelection="true" items="{ path: '/ProductSuppliers' }">
+										<core:Item key="{key}" text="{name}"/>
+									</Select>
+								</fb:control>				
+							</fb:FilterGroupItem>
+						</fb:filterGroupItems>
+					</fb:FilterBar>-->
+				</f:content>
+			</f:DynamicPageHeader>
+		</f:header>
+		<!-- DynamicPage Content -->
+		<f:content>
+			<VBox>
+				<uiTable:Table class="sapUiResponsiveMargin"
+					id="id-dynamic-table"
+					columns="{path:'businessModel>/ColumnData', factory:'.dynamicTableFactory'}"
+					rows="{businessModel>/ProductCollection}"
+					title="Dynamic Table"
+					selectionMode="MultiToggle"
+					visibleRowCount="10"></uiTable:Table>
+			</VBox>
+		</f:content>
+		<!-- DynamicPage Footer -->
+		<f:footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Button type="Accept" text="Accept"/>
+				<Button type="Reject" text="Reject"/>
+			</OverflowToolbar>
+		</f:footer>
+	</f:DynamicPage>
+</mvc:View>

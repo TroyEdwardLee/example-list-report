@@ -1,0 +1,16 @@
+<mvc:View
+	controllerName="example.list.reportexample-list-report.controller.NotFound"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+	<MessagePage
+		title="{i18n>notFoundTitle}"
+		text="{i18n>notFoundText}"
+		icon="{sap-icon://document}"
+		id="idMessagePage"
+		description="">
+		<customDescription>
+			<Link id="link" text="{i18n>backToBusinessAnalysis}" press="onLinkPressed" />
+		</customDescription>
+	</MessagePage>
+
+</mvc:View>
