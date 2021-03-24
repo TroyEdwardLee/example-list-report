@@ -1,6 +1,6 @@
 {
 	"headerExpanded": true,
-	"ProductCollection": [{
+	"ProductCollection1": [{
 			"ProductId": "1239102",
 			"Name": "Power Projector 4713",
 			"Category": "Projector",
@@ -691,17 +691,18 @@
 	"Filter": {
 		"text": "Filtered by: nothing"
 	},
+	"ProductCollection": [],
 	"ColumnData": [{
 		"columnName": "Product Name",
-		"columnId": "Name"
+		"columnId": "ProductName"
 	}, {
 		"columnName": "Product ID",
-		"columnId": "ProductId"
+		"columnId": "ProductID"
 	}, {
-		"columnName": "Category",
-		"columnId": "Category"
+		"columnName": "Category ID",
+		"columnId": "CategoryID"
 	}, {
-		"columnName": "Supplier",
-		"columnId": "SupplierName"
+		"columnName": "Supplier ID",
+		"columnId": "SupplierID"
 	}]
 }

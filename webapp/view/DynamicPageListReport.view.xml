@@ -136,7 +136,7 @@
 					columns="{path:'businessModel>/ColumnData', factory:'.dynamicTableFactory'}"
 					rows="{businessModel>/ProductCollection}"
 					title="Dynamic Table"
-					selectionMode="MultiToggle"
+					selectionMode="None"
 					visibleRowCount="10"></uiTable:Table>
 			</VBox>
 		</f:content>

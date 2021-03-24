@@ -12,9 +12,9 @@ sap.ui.define([
 
 	return Controller.extend("example.list.reportexample-list-report.controller.DynamicPageListReport", {
 		onInit: function() {
-			this.oModel = new JSONModel();
-			this.oModel.loadData(sap.ui.require.toUrl("example/list/reportexample-list-report/mockdata/model.json"), null, false);
-			this.getView().setModel(this.oModel, "businessModel");
+			this.oViewModel = new JSONModel();
+			this.oViewModel.loadData(sap.ui.require.toUrl("example/list/reportexample-list-report/mockdata/model.json"), null, false);
+			this.getView().setModel(this.oViewModel, "businessModel");
 			this.oColModel = new JSONModel({
 				"cols": [
 					{
@@ -38,7 +38,7 @@ sap.ui.define([
 			this.oSelectName = this.getSelect("slName");
 			this.oSelectCategory = this.getSelect("slCategory");
 			this.oSelectSupplierName = this.getSelect("slSupplierName");
-			this.oModel.setProperty("/Filter/text", "Filtered by None");
+			this.oViewModel.setProperty("/Filter/text", "Filtered by None");
 			this.addSnappedLabel();
 
 			/*var oFB = this.getView().byId("filterbar");
@@ -105,7 +105,16 @@ sap.ui.define([
 			this.getOwnerComponent().getModel().read("/Products", {	
 				filters: aFilter,
 				success: function(oData) {
-					console.log(oData);
+					var aColumnData = this.oViewModel.getProperty("/ColumnData");
+					aColumnData.push({
+						"columnName": "Unit Price",
+						"columnId": "UnitPrice"
+					}, {
+						"columnName": "Units In Stock",
+						"columnId": "UnitsInStock"
+					});
+					this.oViewModel.setProperty("/ColumnData", aColumnData);
+					this.oViewModel.setProperty("/ProductCollection", oData.results);
 				}.bind(this),
 				error: function(error) {
 					return;
@@ -124,7 +133,7 @@ sap.ui.define([
 		onExit: function() {
 			this.aKeys = [];
 			this.aFilters = [];
-			this.oModel = null;
+			this.oViewModel = null;
 		},
 		onToggleHeader: function() {
 			this.getPage().setHeaderExpanded(!this.getPage().getHeaderExpanded());
@@ -148,7 +157,7 @@ sap.ui.define([
 		updateFilterCriterias: function(aFilterCriterias) {
 			this.removeSnappedLabel(); /* because in case of label with an empty text, */
 			this.addSnappedLabel(); /* a space for the snapped content will be allocated and can lead to title misalignment */
-			this.oModel.setProperty("/Filter/text", this.getFormattedSummaryText(aFilterCriterias));
+			this.oViewModel.setProperty("/Filter/text", this.getFormattedSummaryText(aFilterCriterias));
 		},
 
 		addSnappedLabel: function() {
@@ -233,7 +242,7 @@ sap.ui.define([
 			oFilterBar.setBasicSearch(this._oBasicSearchFieldWithSuggestions);
 
 			this._oValueHelpDialogWithSuggestions.getTableAsync().then(function (oTable) {
-				oTable.setModel(this.oModel);
+				oTable.setModel(this.oViewModel);
 				oTable.setModel(this.oColModel, "columns");
 
 				if (oTable.bindRows) {
