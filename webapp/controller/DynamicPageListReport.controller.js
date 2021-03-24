@@ -100,7 +100,7 @@ sap.ui.define([
 		},
 		// dynamic ui table factory function begin
 
-		onSearch: function(event) {		
+		onSearch: function(event) {
 			var aFilter = this.getView().byId("smartFilterBar").getFilters();	
 			this.getOwnerComponent().getModel().read("/Products", {	
 				filters: aFilter,
