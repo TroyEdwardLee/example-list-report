@@ -32,6 +32,33 @@
 					</Collection>
 				</Annotation>
 			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="NorthwindModel.Product/ProductName">
+				<Annotation Term="com.sap.vocabularies.Common.v1.ValueList">
+					<Record>
+						<PropertyValue Property="Label" String="ProductName"/>
+						<PropertyValue Property="CollectionPath" String="Current_Product_Lists"/>
+						<PropertyValue Property="SearchSupported" Bool="false"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterInOut">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="ProductID"/>
+									<PropertyValue Property="ValueListProperty" String="ProductID"/>
+									<Annotation Term="Common.Heading" String="Product ID"/>
+								</Record>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterInOut">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="ProductName"/>
+									<PropertyValue Property="ValueListProperty" String="ProductName"/>
+									<Annotation Term="Common.Heading" String="{@i18n&gt;PRODUCT_NAME}"/>
+								</Record>
+								<!--<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterDisplayOnly">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="ProductName"/>
+									<PropertyValue Property="ValueListProperty" String="ProductName"/>
+								</Record>-->
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
 		</Schema>
 	</edmx:DataServices>
 </edmx:Edmx>
