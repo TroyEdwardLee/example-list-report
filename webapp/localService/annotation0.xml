@@ -21,6 +21,17 @@
 		<edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
 	</edmx:Reference>
 	<edmx:DataServices>
-		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm">
+			<Annotations Target="NorthwindModel.Product">
+				<Annotation Term="UI.SelectionFields">
+					<Collection>
+						<PropertyPath>CategoryID</PropertyPath>
+						<PropertyPath>ProductName</PropertyPath>
+						<PropertyPath>ProductID</PropertyPath>
+						<PropertyPath>SupplierID</PropertyPath>
+					</Collection>
+				</Annotation>
+			</Annotations>
+		</Schema>
 	</edmx:DataServices>
 </edmx:Edmx>
