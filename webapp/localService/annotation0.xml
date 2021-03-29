@@ -23,12 +23,34 @@
 	<edmx:DataServices>
 		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm">
 			<Annotations Target="NorthwindModel.Product">
+				<Annotation Term="UI.FieldGroup" Qualifier="FieldGroup1">
+					<Record Type="UI.FieldGroupType">
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="UnitPrice"/>
+									<PropertyValue Property="Label" String="Price Units"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="UnitsInStock"/>
+									<PropertyValue Property="Label" String="InStock Units"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="UnitsOnOrder"/>
+									<PropertyValue Property="Label" String="OnOrder Units"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Label" String="Unit"/>
+					</Record>
+				</Annotation>
 				<Annotation Term="UI.SelectionFields">
 					<Collection>
 						<PropertyPath>CategoryID</PropertyPath>
 						<PropertyPath>ProductName</PropertyPath>
 						<PropertyPath>ProductID</PropertyPath>
 						<PropertyPath>SupplierID</PropertyPath>
+						<PropertyPath >UnitPrice</PropertyPath>
 					</Collection>
 				</Annotation>
 			</Annotations>
@@ -48,7 +70,7 @@
 								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterInOut">
 									<PropertyValue Property="LocalDataProperty" PropertyPath="ProductName"/>
 									<PropertyValue Property="ValueListProperty" String="ProductName"/>
-									<Annotation Term="Common.Heading" String="PRODUCT_NAME"/>
+									<Annotation Term="Common.Heading" String="Product Name"/>
 								</Record>
 								<!--<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterDisplayOnly">
 									<PropertyValue Property="LocalDataProperty" PropertyPath="ProductName"/>
