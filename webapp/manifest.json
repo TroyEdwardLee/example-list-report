@@ -20,9 +20,7 @@
 				"settings": {
 					"localUri": "localService/metadata.xml",
 					"odataVersion": "2.0",
-					"annotations": [
-						"annotation0"
-					]
+					"annotations": ["annotation0"]
 				}
 			},
 			"annotation0": {
@@ -49,10 +47,7 @@
 			"tablet": false,
 			"phone": false
 		},
-		"supportedThemes": [
-			"sap_hcb",
-			"sap_belize"
-		]
+		"supportedThemes": ["sap_hcb", "sap_belize"]
 	},
 	"sap.ui5": {
 		"rootView": {
@@ -104,6 +99,12 @@
 			"@i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
 				"uri": "i18n/i18n.properties"
+			},
+			"componentModel": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {},
+				"preload": false,
+				"uri": "mockdata/filterMetadata.json"
 			}
 		},
 		"routing": {
@@ -116,15 +117,11 @@
 				"transition": "slide",
 				"async": true
 			},
-			"routes": [
-				{
-					"pattern": "",
-					"name": "DynamicPageListReport",
-					"target": [
-						"listReport"
-					]
-				}
-			],
+			"routes": [{
+				"pattern": "",
+				"name": "DynamicPageListReport",
+				"target": ["listReport"]
+			}],
 			"targets": {
 				"listReport": {
 					"viewName": "DynamicPageListReport",
@@ -134,11 +131,9 @@
 			}
 		},
 		"resources": {
-			"css": [
-				{
-					"uri": "css/style.css"
-				}
-			]
+			"css": [{
+				"uri": "css/style.css"
+			}]
 		}
 	}
 }

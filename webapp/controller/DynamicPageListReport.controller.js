@@ -39,6 +39,7 @@ sap.ui.define([
 			this.oSelectCategory = this.getSelect("slCategory");
 			this.oSelectSupplierName = this.getSelect("slSupplierName");
 			this.oViewModel.setProperty("/Filter/text", "Filtered by None");
+			this.oViewModel.setProperty("/bUnitsOnOrderVisible", false);
 			this.addSnappedLabel();
 
 			/*var oFB = this.getView().byId("filterbar");
@@ -99,6 +100,22 @@ sap.ui.define([
 			return oText;
 		},
 		// dynamic ui table factory function begin
+		
+		handleProductNameFilterChange: function(oEvent) {
+			// this.oComponentModel = this.getOwnerComponent().getModel("componentModel");
+			if (!this.oViewModel) {
+				return;
+			}
+			var oSource = oEvent.getParameters().getSource(),
+				// sChangeReason = oParams.getParameter("filterChangeReason"),
+				sControlId = sValue = oSource.getId(),
+				sValue = oSource.getProperty("value"),
+				sSelectedKey = oSource.getProperty("selectedKey");
+			this.oViewModel.setProperty("/bUnitsOnOrderVisible", false);
+			if (sControlId.indexOf("ProductName") && sValue.trim().length && sSelectedKey.trim().length && sValue.trim() === "Chai") {
+				this.oViewModel.setProperty("/bUnitsOnOrderVisible", true);
+			}
+		},
 
 		onSearch: function(event) {
 			var aFilter = this.getView().byId("smartFilterBar").getFilters();	

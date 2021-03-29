@@ -28,9 +28,9 @@
 					<smartFilterBar:SmartFilterBar id="smartFilterBar" search="onSearch"
 						smartVariant="__SVM01" useToolbar="false" entitySet="Products"
 						persistencyKey="UniqueAndStablePersistencyKey.FilterBar"
-						assignedFiltersChanged="onAssignedFiltersChanged" enableBasicSearch="false" basicSearchFieldName="ProductId">
-						<!--<smartFilterBar:controlConfiguration>
-							<smartFilterBar:ControlConfiguration
+						filterChange="handleProductNameFilterChange" enableBasicSearch="false" basicSearchFieldName="ProductId">
+						<smartFilterBar:controlConfiguration>
+							<!--<smartFilterBar:ControlConfiguration
 								key="MyOwnFilterField" index="1" label="Custom Filter Field"
 								groupId="_BASIC" width="300px" mandatory="mandatory"
 								visibleInAdvancedArea="true">
@@ -41,20 +41,23 @@
 										<core:Item key="3" text="THREE"/>
 									</Select>
 								</smartFilterBar:customControl>
+							</smartFilterBar:ControlConfiguration>-->
+							<smartFilterBar:ControlConfiguration filterType="single" controlType="dropDownList"
+								key="ProductName" label="Product Name" visibleInAdvancedArea="true" index="1">
 							</smartFilterBar:ControlConfiguration>
-							<smartFilterBar:ControlConfiguration
-								key="ProductName" label="Product Name" visibleInAdvancedArea="true">
+							<!--<smartFilterBar:ControlConfiguration
+								key="CategoryID" label="Category ID" visibleInAdvancedArea="true">
 							</smartFilterBar:ControlConfiguration>
 							<smartFilterBar:ControlConfiguration
 								key="ProductID" label="Product ID" visibleInAdvancedArea="true">
 							</smartFilterBar:ControlConfiguration>
 							<smartFilterBar:ControlConfiguration
-								key="CategoryID" label="Category ID" visibleInAdvancedArea="true">
-							</smartFilterBar:ControlConfiguration>
-							<smartFilterBar:ControlConfiguration
 								key="SupplierID" label="Supplier ID" visibleInAdvancedArea="true">
+							</smartFilterBar:ControlConfiguration>-->
+							<smartFilterBar:ControlConfiguration visible="{businessModel>/bUnitsOnOrderVisible}" visibleInAdvancedArea="{businessModel>/bUnitsOnOrderVisible}"
+								key="UnitsOnOrder" label="On Order Units">
 							</smartFilterBar:ControlConfiguration>
-						</smartFilterBar:controlConfiguration>-->
+						</smartFilterBar:controlConfiguration>
 						<!--<smartFilterBar:groupConfiguration>
 							<smartFilterBar:GroupConfiguration
 									key="Products" label="Product">
