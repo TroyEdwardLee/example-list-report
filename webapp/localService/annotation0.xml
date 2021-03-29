@@ -48,7 +48,7 @@
 								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterInOut">
 									<PropertyValue Property="LocalDataProperty" PropertyPath="ProductName"/>
 									<PropertyValue Property="ValueListProperty" String="ProductName"/>
-									<Annotation Term="Common.Heading" String="{@i18n&gt;PRODUCT_NAME}"/>
+									<Annotation Term="Common.Heading" String="PRODUCT_NAME"/>
 								</Record>
 								<!--<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterDisplayOnly">
 									<PropertyValue Property="LocalDataProperty" PropertyPath="ProductName"/>
